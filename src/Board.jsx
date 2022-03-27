@@ -1,18 +1,26 @@
 import './styles/Board.css';
+import { useState } from 'react';
 
-const game = [
-  [null, null, 'x'],
-  [null, 'x', null],
-  [null, null, null]
-]
+const Board = ({ game, setGame }) => {
 
-const Board = () => {
+  function play(x,y) {
+    console.log(x,y);
+    let newGame = game;
+    newGame[x][y] = 'x'
+    setGame(newGame);
+  }
+
   return ( 
     <div className="Board">
-      {game.map((row) => {
-        return row.map(column => (
+      { game &&game.map((row,x) => {
+        return row.map((column,y) => (
         <div 
-        className="cell" >{column}
+        className="cell" 
+        key={`${x},${y}`}
+        onClick={event => {
+          play(x,y)
+        }}
+        >{column}
         </div>))
       })}
     </div>
