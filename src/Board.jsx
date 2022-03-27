@@ -1,5 +1,4 @@
 import './styles/Board.css';
-import { useState } from 'react';
 
 const Board = ({ game, setGame }) => {
 
